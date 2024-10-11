@@ -1,3 +1,4 @@
+import sys
 from settings import *
 from player import Player
 from sprites import *
@@ -23,7 +24,7 @@ class Game:
         #gun timer
         self.can_shoot = True
         self.shoot_time = 0
-        self.gun_cooldown = 600
+        self.gun_cooldown = 400
         
         #enemy timer
         self.enemy_event = pygame.event.custom_type()
@@ -97,8 +98,8 @@ class Game:
                 
     def player_collision(self):
         if pygame.sprite.spritecollide(self.player, self.enemy_sprites, False, pygame.sprite.collide_mask):
-            self.running = False
-                
+            pygame.quit()  # Tắt Pygame
+            sys.exit()
     def run(self):
         while self.running:
             # dt
