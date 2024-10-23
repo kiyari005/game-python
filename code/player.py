@@ -1,4 +1,4 @@
-from settings import *
+﻿from settings import *
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, pos, groups, collision_sprites):
@@ -8,11 +8,20 @@ class Player(pygame.sprite.Sprite):
         self.image = pygame.image.load(join('images', 'player', 'down', '0.png')).convert_alpha()
         self.rect = self.image.get_rect(center = pos)
         self.hitbox_rect = self.rect.inflate(-60, -90)
-        
+        self.lives = 3  
         # movement
+        self.last_damage_time = 0  # Thời gian người chơi bị trừ máu lần cuối
+        self.damage_interval = 1000 
         self.direction = pygame.Vector2()
         self.speed = 500
         self.collision_sprites = collision_sprites
+        self.health = 100  # Giả sử người chơi có 100 máu
+        self.max_health = 100
+        self.is_damaged = False 
+        self.collision_sprites = collision_sprites
+        self.image = pygame.Surface((TILE_SIZE, TILE_SIZE))
+        self.rect = self.image.get_rect(topleft=pos)
+        self.mask = pygame.mask.from_surface(self.image)
         
     def load_images(self):
         self.frames = {'left': [], 'right': [], 'up': [], 'down': []}
@@ -25,7 +34,17 @@ class Player(pygame.sprite.Sprite):
                         surf = pygame.image.load(full_path).convert_alpha()
                         self.frames[state].append(surf)
                
-              
+    def take_damage(self, amount):
+        """Giảm máu của người chơi"""
+        current_time = pygame.time.get_ticks()
+        if current_time - self.last_damage_time >= self.damage_interval:  # Kiểm tra thời gian hồi phục
+            self.health -= amount
+            self.last_damage_time = current_time  # Cập nhật thời gian bị trừ máu
+            if self.health <= 0:
+                self.health = self.max_health  # Khôi phục máu
+                self.lives -= 1  # Giảm số mạng
+                if self.lives <= 0:
+                    print("Game Over!")  # Xử lý khi hết mạng 
     def input(self):
         keys = pygame.key.get_pressed()
         self.direction.x = int(keys[pygame.K_RIGHT] or keys[pygame.K_d]) - int(keys[pygame.K_LEFT] or keys[pygame.K_a])
