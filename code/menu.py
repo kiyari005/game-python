@@ -56,7 +56,7 @@ def main_menu():
                     pygame.quit()
                     sys.exit()
 
-        # Cập nhật màn hình
+        # Cập nhật màn hìnha
         pygame.display.update()
 
 # Chạy hàm menu
