@@ -20,9 +20,9 @@ class Player(pygame.sprite.Sprite):
         self.is_damaged = False 
         self.collision_sprites = collision_sprites
         self.image = pygame.Surface((TILE_SIZE, TILE_SIZE))
-        self.rect = self.image.get_rect(topleft=pos)
-        self.mask = pygame.mask.from_surface(self.image)
         
+        self.mask = pygame.mask.from_surface(self.image)
+            
     def load_images(self):
         self.frames = {'left': [], 'right': [], 'up': [], 'down': []}
         
