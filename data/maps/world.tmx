@@ -126,7 +126,7 @@
   <object id="60" name="Enemy" x="2624.61" y="1658.19">
    <point/>
   </object>
-  <object id="61" name="Enemy" x="2429.81" y="1295.03">
+  <object id="61" name="Enemy" x="2113.81" y="929.03">
    <point/>
   </object>
   <object id="62" name="Enemy" x="684" y="2410.67">
@@ -144,7 +144,7 @@
   <object id="66" name="Enemy" x="2594.91" y="2196">
    <point/>
   </object>
-  <object id="67" name="Enemy" x="2428.97" y="1563.76">
+  <object id="67" name="Enemy" x="2366.97" y="1275.76">
    <point/>
   </object>
   <object id="68" name="Enemy" x="1929.09" y="892.966">
@@ -195,8 +195,8 @@
   <object id="99" x="336" y="416" width="242.667" height="529.333"/>
   <object id="100" x="521.333" y="857.333" width="118.667" height="506.667"/>
   <object id="101" x="380" y="1274.67" width="185.333" height="1076"/>
-  <object id="157" x="1744" y="1606" width="178" height="249"/>
-  <object id="158" x="1808" y="1543" width="172" height="177"/>
+  <object id="157" x="1744" y="1582" width="178" height="273"/>
+  <object id="158" x="1812" y="1519" width="168" height="201"/>
   <object id="159" x="1942" y="1534" width="104" height="114"/>
   <object id="160" x="1194" y="1448" width="436" height="129"/>
   <object id="161" x="1519" y="1560" width="108" height="188"/>
@@ -284,7 +284,7 @@
   <object id="153" gid="218" x="1853.28" y="1249.85" width="64" height="104"/>
   <object id="154" gid="214" x="1486.67" y="1549.33" width="128" height="192"/>
   <object id="155" gid="215" x="1534.67" y="1626.67" width="64" height="128"/>
-  <object id="162" gid="214" x="2190.67" y="1665.33" width="128" height="192"/>
+  <object id="162" gid="214" x="2266.67" y="1613.33" width="128" height="192"/>
   <object id="163" gid="214" x="1097.33" y="616" width="128" height="192"/>
   <object id="164" gid="214" x="1153.33" y="677.333" width="128" height="192"/>
   <object id="165" gid="213" x="1313.33" y="670.667" width="128" height="192"/>

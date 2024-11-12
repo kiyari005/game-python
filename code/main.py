@@ -27,7 +27,7 @@ class Game:
         #gun timer
         self.can_shoot = True
         self.shoot_time = 0
-        self.gun_cooldown = 400
+        self.gun_cooldown = 300
         
         #enemy timer
         self.enemy_event = pygame.event.custom_type()
@@ -43,6 +43,7 @@ class Game:
         #setup
         self.load_images()
         self.setup()
+        self.score = 0  # Thêm thuộc tính điểm số
 
     def load_images(self):
         self.bullet_surf = pygame.image.load(join('images', 'gun', 'bullet.png')).convert_alpha()
@@ -94,9 +95,10 @@ class Game:
             for bullet in self.bullet_sprites:
                 collision_sprites = pygame.sprite.spritecollide(bullet, self.enemy_sprites, False, pygame.sprite.collide_mask)
                 if collision_sprites:
-                    self.impact_sound.play
+                    self.impact_sound.play()
                     for sprite in collision_sprites:
                         sprite.destroy()
+                        self.score += 1  # Tăng điểm số khi tiêu diệt enemy
                     bullet.kill()
                 
     def player_collision(self):
@@ -116,6 +118,11 @@ class Game:
     # Vẽ thanh máu
      pygame.draw.rect(self.display_surface, (255, 0, 0), health_bar_rect)  # Màu nền đỏ
      pygame.draw.rect(self.display_surface, (0, 255, 0), current_health_rect)  # Màu máu xanh lá
+
+    def draw_score(self):
+        font = pygame.font.Font(None, 36)
+        score_text = font.render(f'Score: {self.score}', True, (255, 255, 255))
+        self.display_surface.blit(score_text, (WINDOW_WIDTH - 110, 10))  # Vẽ điểm số ở góc phải trên
 
     def run(self):
      while self.running:
@@ -141,6 +148,7 @@ class Game:
         self.all_sprites.draw(self.player.rect.center)
         self.draw_health_bar()  # Vẽ thanh máu
         self.draw_lives()        # Vẽ số mạng
+        self.draw_score()        # Vẽ điểm số
         pygame.display.update()
 
     pygame.quit()
